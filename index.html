@@ -1420,6 +1420,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            gap: 12px;
             height: 100%;
             min-height: 0;
             overflow: hidden;
@@ -1442,12 +1443,31 @@
             align-items: flex-start;
         }
 
+        .card-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .card-content {
             font-size: 10px;
             color: var(--dark-outline);
             line-height: 1.4;
             flex: 1;
             text-align: justify;
+            min-height: 0;
         }
 
         .description-card .card-content {
@@ -3492,14 +3512,23 @@
             <div class="cards-container">
                 <div class="card description-card" id="card-1">
                     <div class="card-title">Deskripsi Soal</div>
+                    <div class="card-image">
+                        <img src="https://raw.githubusercontent.com/ALIYAA-beep/MEDIA-RO-JUNE/main/mini%20game%20(3).png" alt="Angklung" />
+                    </div>
                     <div class="card-content" id="desc-1"></div>
                 </div>
                 <div class="card description-card" id="card-2">
                     <div class="card-title">Deskripsi Soal</div>
+                    <div class="card-image">
+                        <img src="https://raw.githubusercontent.com/ALIYAA-beep/MEDIA-RO-JUNE/main/mini%20game%20(3).png" alt="Angklung" />
+                    </div>
                     <div class="card-content" id="desc-2"></div>
                 </div>
                 <div class="card question-card" id="card-3">
                     <div class="card-title">Soal 1</div>
+                    <div class="card-image">
+                        <img src="https://raw.githubusercontent.com/ALIYAA-beep/MEDIA-RO-JUNE/main/mini%20game%20(3).png" alt="Angklung" />
+                    </div>
                     <div class="question-scroll-area">
                         <div class="card-content" id="question-card-3"></div>
                         <div class="quiz-options" id="options-3"></div>
@@ -3507,6 +3536,9 @@
                 </div>
                 <div class="card question-card" id="card-4">
                     <div class="card-title">Soal 2</div>
+                    <div class="card-image">
+                        <img src="https://raw.githubusercontent.com/ALIYAA-beep/MEDIA-RO-JUNE/main/mini%20game%20(3).png" alt="Angklung" />
+                    </div>
                     <div class="question-scroll-area">
                         <div class="card-content" id="question-card-4"></div>
                         <div class="quiz-options" id="options-4"></div>
