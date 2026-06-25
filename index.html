@@ -1477,8 +1477,9 @@
             scrollbar-width: thin;
             scrollbar-gutter: stable;
             padding-right: 12px;
-            flex: 1 1 auto;
+            flex: 1 1 0;
             min-height: 0;
+            margin-bottom: 0;
         }
 
         .question-card {
@@ -1488,13 +1489,11 @@
             min-height: 0;
         }
 
-        .question-scroll-area {
+        .card-body {
             display: flex;
             flex-direction: column;
-            flex: 1 1 auto;
-            width: 100%;
+            flex: 1 1 0;
             min-height: 0;
-            max-height: 100%;
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
@@ -1502,15 +1501,23 @@
             scrollbar-gutter: stable;
             padding-right: 12px;
             gap: 12px;
-            margin-top: 6px;
+            margin-top: 0;
         }
 
         .question-card .card-content {
             overflow: visible;
-            flex: 0 0 auto;
+            flex: 1 1 0;
             min-height: 0;
             padding-right: 0;
             margin: 0;
+            width: 100%;
+        }
+
+        .card-footer {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             width: 100%;
         }
 
@@ -3512,23 +3519,31 @@
             <div class="cards-container">
                 <div class="card description-card" id="card-1">
                     <div class="card-title">Deskripsi Soal</div>
-                    <div class="card-content" id="desc-1"></div>
+                    <div class="card-body">
+                        <div class="card-content" id="desc-1"></div>
+                    </div>
                 </div>
                 <div class="card description-card" id="card-2">
                     <div class="card-title">Deskripsi Soal</div>
-                    <div class="card-content" id="desc-2"></div>
+                    <div class="card-body">
+                        <div class="card-content" id="desc-2"></div>
+                    </div>
                 </div>
                 <div class="card question-card" id="card-3">
                     <div class="card-title">Soal 1</div>
-                    <div class="question-scroll-area">
+                    <div class="card-body">
                         <div class="card-content" id="question-card-3"></div>
+                    </div>
+                    <div class="card-footer">
                         <div class="quiz-options" id="options-3"></div>
                     </div>
                 </div>
                 <div class="card question-card" id="card-4">
                     <div class="card-title">Soal 2</div>
-                    <div class="question-scroll-area">
+                    <div class="card-body">
                         <div class="card-content" id="question-card-4"></div>
+                    </div>
+                    <div class="card-footer">
                         <div class="quiz-options" id="options-4"></div>
                     </div>
                 </div>
