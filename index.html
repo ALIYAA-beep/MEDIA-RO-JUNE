@@ -1420,7 +1420,6 @@
             height: 100%;
             min-height: 0;
             overflow: hidden;
-            width: 100%;
         }
 
         .card:hover {
@@ -1442,20 +1441,8 @@
             font-size: 10px;
             color: var(--dark-outline);
             line-height: 1.4;
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            gap: 10px;
-        }
-
-        .card-content img {
-            width: 100%;
-            height: auto;
-            max-height: 180px;
-            object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 10px;
+            flex: 1;
+            text-align: justify;
         }
 
         .description-card .card-content {
@@ -4378,14 +4365,7 @@
 
         function showAreaPreview() {
             state.autoPaused = true;
-            const city = cityData[state.idx];
-            const overlay = document.getElementById('area-preview-overlay');
-            document.getElementById('preview-image').src = city.image || DEFAULT_PREVIEW_IMAGE;
-            document.getElementById('preview-title').innerText = `WILAYAH: ${city.name}`;
-            document.getElementById('preview-subtitle').innerText = `Kamu telah sampai di ${city.name}. Tekan MASUK KE SOAL untuk melanjutkan ke tantangan.`;
-            hideBoardToken();
-            overlay.classList.remove('hidden');
-            overlay.classList.add('show');
+            openAdventureOverlay();
         }
 
         function showRegionNotification() {
@@ -4670,7 +4650,7 @@
 
         function showQuizCards() {
             const quiz1 = cityQuestions[state.idx];
-            const nextIdx = state.idx === cityData.length - 1 ? 1 : state.idx + 1; // Next kota, loop ke 1 jika mencapai tile terakhir
+            const nextIdx = (state.idx % cityData.length) + 1; // Next kota, loop ke 1 jika 15
             const quiz2 = cityQuestions[nextIdx];
             
             if (!quiz1 || !quiz2) {
@@ -4848,6 +4828,9 @@
         });
 
         initBoard();
+    </script>
+</body>
+</html>
     </script>
 </body>
 </html>
