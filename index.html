@@ -32,6 +32,9 @@
             --border-width: clamp(1px, 0.25vw, 1.5px);
             --card-bg-tint: #F7FBFF; /* slight blue-white tint for cards */
             --card-shadow: rgba(93,140,210,0.12);
+            --soft-brown: #D4B69B;
+            --soft-brown-light: #F3E8DD;
+            --soft-brown-border: rgba(148, 108, 79, 0.35);
             --dark-text: #102A43;   /* navy for readable text */
             --dark-outline: var(--dark-text);
             --soft-white: #FFFFFF;
@@ -1407,12 +1410,12 @@
         }
 
         .card {
-            background: linear-gradient(135deg, var(--soft-cloud-blue) 0%, var(--card-bg-tint) 100%);
-            border: var(--border-width) solid var(--border-strong);
+            background: linear-gradient(135deg, var(--soft-brown-light) 0%, var(--soft-brown) 100%);
+            border: var(--border-width) solid var(--soft-brown-border);
             border-radius: 15px;
             padding: 14px;
             text-align: left;
-            box-shadow: 0 10px 22px var(--card-shadow);
+            box-shadow: 0 10px 22px rgba(148, 108, 79, 0.18);
             transition: transform 0.28s ease;
             display: flex;
             flex-direction: column;
