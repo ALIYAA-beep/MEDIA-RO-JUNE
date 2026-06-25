@@ -1401,10 +1401,10 @@
         .cards-container {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
-            grid-auto-rows: minmax(0, 1fr);
+            grid-auto-rows: 560px;
             gap: 12px;
             width: 100%;
-            flex: 1;
+            height: 100%;
             min-height: 0;
             align-items: stretch;
         }
@@ -1422,10 +1422,27 @@
             justify-content: flex-start;
             gap: 12px;
             height: 100%;
-            min-height: 0;
             overflow: hidden;
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 0;
+            min-height: 0;
+            overflow: hidden;
+            gap: 12px;
+        }
+
+        .card-footer {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            min-height: 72px;
         }
 
         .card:hover {
@@ -1438,7 +1455,7 @@
             color: var(--dark-outline);
             margin-bottom: 8px;
             letter-spacing: 0.08em;
-            min-height: 3.4em;
+            min-height: 3.6em;
             display: flex;
             align-items: flex-start;
         }
@@ -1465,21 +1482,25 @@
             font-size: 10px;
             color: var(--dark-outline);
             line-height: 1.4;
-            flex: 1;
+            flex: 1 1 0;
             text-align: justify;
             min-height: 0;
-        }
-
-        .description-card .card-content {
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
             scrollbar-gutter: stable;
             padding-right: 12px;
-            flex: 1 1 0;
+        }
+
+        .description-card .card-content {
+            padding-right: 12px;
             min-height: 0;
             margin-bottom: 0;
+        }
+
+        #quiz-cards-overlay .card-footer {
+            min-height: 68px;
         }
 
         .question-card {
@@ -1494,21 +1515,26 @@
             flex-direction: column;
             flex: 1 1 0;
             min-height: 0;
+            overflow: hidden;
+            gap: 10px;
+        }
+
+        .card-content {
+            font-size: 10px;
+            color: var(--dark-outline);
+            line-height: 1.4;
+            flex: 1 1 0;
+            min-height: 0;
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
             scrollbar-gutter: stable;
             padding-right: 12px;
-            gap: 12px;
-            margin-top: 0;
+            text-align: justify;
         }
 
         .question-card .card-content {
-            overflow: visible;
-            flex: 1 1 0;
-            min-height: 0;
-            padding-right: 0;
             margin: 0;
             width: 100%;
         }
@@ -1521,7 +1547,7 @@
             width: 100%;
         }
 
-        .question-card .card-content img {
+        .card-content img {
             width: 100%;
             height: 160px;
             max-height: 160px;
@@ -1533,7 +1559,6 @@
 
         .question-card .quiz-options {
             padding-right: 0;
-            flex-shrink: 0;
             display: grid;
             gap: 10px;
             width: 100%;
@@ -3522,12 +3547,14 @@
                     <div class="card-body">
                         <div class="card-content" id="desc-1"></div>
                     </div>
+                    <div class="card-footer"></div>
                 </div>
                 <div class="card description-card" id="card-2">
                     <div class="card-title">Deskripsi Soal</div>
                     <div class="card-body">
                         <div class="card-content" id="desc-2"></div>
                     </div>
+                    <div class="card-footer"></div>
                 </div>
                 <div class="card question-card" id="card-3">
                     <div class="card-title">Soal 1</div>
