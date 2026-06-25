@@ -32,9 +32,6 @@
             --border-width: clamp(1px, 0.25vw, 1.5px);
             --card-bg-tint: #F7FBFF; /* slight blue-white tint for cards */
             --card-shadow: rgba(93,140,210,0.12);
-            --soft-brown: #D4B69B;
-            --soft-brown-light: #F3E8DD;
-            --soft-brown-border: rgba(148, 108, 79, 0.35);
             --dark-text: #102A43;   /* navy for readable text */
             --dark-outline: var(--dark-text);
             --soft-white: #FFFFFF;
@@ -1401,48 +1398,28 @@
         .cards-container {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
-            grid-auto-rows: 560px;
+            grid-auto-rows: minmax(0, 1fr);
             gap: 12px;
             width: 100%;
-            height: 100%;
+            flex: 1;
             min-height: 0;
             align-items: stretch;
         }
 
-        #quiz-cards-overlay .cards-container .card {
-            background: rgba(243, 232, 221, 0.62);
-            border: var(--border-width) solid rgba(148, 108, 79, 0.16);
+        .card {
+            background: linear-gradient(135deg, var(--soft-cloud-blue) 0%, var(--card-bg-tint) 100%);
+            border: var(--border-width) solid var(--border-strong);
             border-radius: 15px;
             padding: 14px;
             text-align: left;
-            box-shadow: 0 6px 14px rgba(148, 108, 79, 0.08);
+            box-shadow: 0 10px 22px var(--card-shadow);
             transition: transform 0.28s ease;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            gap: 12px;
             height: 100%;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            flex: 1 1 0;
             min-height: 0;
             overflow: hidden;
-            gap: 12px;
-        }
-
-        .card-footer {
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
-            min-height: 72px;
         }
 
         .card:hover {
@@ -1455,52 +1432,28 @@
             color: var(--dark-outline);
             margin-bottom: 8px;
             letter-spacing: 0.08em;
-            min-height: 3.6em;
+            min-height: 3.4em;
             display: flex;
             align-items: flex-start;
-        }
-
-        .card-image {
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border-radius: 14px;
-            overflow: hidden;
-            background: rgba(255,255,255,0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
 
         .card-content {
             font-size: 10px;
             color: var(--dark-outline);
             line-height: 1.4;
-            flex: 1 1 0;
+            flex: 1;
             text-align: justify;
-            min-height: 0;
+        }
+
+        .description-card .card-content {
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
             scrollbar-gutter: stable;
             padding-right: 12px;
-        }
-
-        .description-card .card-content {
-            padding-right: 12px;
+            flex: 1 1 auto;
             min-height: 0;
-            margin-bottom: 0;
-        }
-
-        #quiz-cards-overlay .card-footer {
-            min-height: 68px;
         }
 
         .question-card {
@@ -1510,55 +1463,46 @@
             min-height: 0;
         }
 
-        .card-body {
+        .question-scroll-area {
             display: flex;
             flex-direction: column;
-            flex: 1 1 0;
+            flex: 1 1 auto;
+            width: 100%;
             min-height: 0;
-            overflow: hidden;
-            gap: 10px;
-        }
-
-        .card-content {
-            font-size: 10px;
-            color: var(--dark-outline);
-            line-height: 1.4;
-            flex: 1 1 0;
-            min-height: 0;
+            max-height: 100%;
             overflow-y: auto;
             overflow-x: hidden;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: thin;
             scrollbar-gutter: stable;
             padding-right: 12px;
-            text-align: justify;
+            gap: 12px;
+            margin-top: 6px;
         }
 
         .question-card .card-content {
+            overflow: visible;
+            flex: 0 0 auto;
+            min-height: 0;
+            padding-right: 0;
             margin: 0;
             width: 100%;
         }
 
-        .card-footer {
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .question-card .card-content img {
             width: 100%;
-        }
-
-        .card-content img {
-            width: 100%;
-            height: 160px;
-            max-height: 160px;
+            max-width: 100%;
+            height: auto;
+            max-height: 220px;
             object-fit: contain;
             display: block;
-            border-radius: 12px;
+            border-radius: 14px;
             margin: 0 auto 12px auto;
         }
 
         .question-card .quiz-options {
             padding-right: 0;
+            flex-shrink: 0;
             display: grid;
             gap: 10px;
             width: 100%;
@@ -1699,13 +1643,12 @@
         }
 
         .card-content img {
-            width: 100%;
-            height: 160px;
-            max-height: 160px;
+            max-height: 200px;
             object-fit: contain;
             display: block;
-            margin: 8px auto 12px;
-            border-radius: 12px;
+            margin: 8px auto;
+            width: 100%;
+            max-width: 90%;
         }
 
         .description-card,
@@ -1773,8 +1716,6 @@
             overflow-y: auto;
             overflow-x: hidden;
             padding: clamp(6px, 0.9vw, 12px);
-            background: url('https://raw.githubusercontent.com/ALIYAA-beep/MEDIA-RO-JUNE/f06b06208997227caa732de4b03e1cbd88a243e6/mini%20game%20(3).png') center/cover no-repeat;
-            background-color: var(--soft-cloud-blue);
         }
 
         #adventure-overlay::-webkit-scrollbar {
@@ -1991,7 +1932,7 @@
             min-width: 0;
             margin: 0;
             background-color: transparent;
-            background-image: url("https://raw.githubusercontent.com/ALIYAA-beep/MEDIA-RO-JUNE/f06b06208997227caa732de4b03e1cbd88a243e6/mini%20game%20(3).png");
+            background-image: url("https://raw.githubusercontent.com/yuramarvellyn-cmyk/RESONANCE-ODYSSEY-JUNI/ce94bd70c9afe0ea3e51ea04386e98f00a953784/mini%20game.png");
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
@@ -3544,33 +3485,23 @@
             <div class="cards-container">
                 <div class="card description-card" id="card-1">
                     <div class="card-title">Deskripsi Soal</div>
-                    <div class="card-body">
-                        <div class="card-content" id="desc-1"></div>
-                    </div>
-                    <div class="card-footer"></div>
+                    <div class="card-content" id="desc-1"></div>
                 </div>
                 <div class="card description-card" id="card-2">
                     <div class="card-title">Deskripsi Soal</div>
-                    <div class="card-body">
-                        <div class="card-content" id="desc-2"></div>
-                    </div>
-                    <div class="card-footer"></div>
+                    <div class="card-content" id="desc-2"></div>
                 </div>
                 <div class="card question-card" id="card-3">
                     <div class="card-title">Soal 1</div>
-                    <div class="card-body">
+                    <div class="question-scroll-area">
                         <div class="card-content" id="question-card-3"></div>
-                    </div>
-                    <div class="card-footer">
                         <div class="quiz-options" id="options-3"></div>
                     </div>
                 </div>
                 <div class="card question-card" id="card-4">
                     <div class="card-title">Soal 2</div>
-                    <div class="card-body">
+                    <div class="question-scroll-area">
                         <div class="card-content" id="question-card-4"></div>
-                    </div>
-                    <div class="card-footer">
                         <div class="quiz-options" id="options-4"></div>
                     </div>
                 </div>
